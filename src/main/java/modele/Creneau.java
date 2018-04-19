@@ -5,17 +5,23 @@
  */
 package modele;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author allan
  */
 @Entity
-class Creneau {
+class Creneau implements Serializable {
+    
+    @Id
     private Date dateDebut;
+   
+    @Id
     @Column (nullable = false)
     private Integer duree;
 

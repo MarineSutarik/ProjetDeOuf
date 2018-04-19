@@ -23,6 +23,7 @@ public class Membre {
     private String prenom;
     private String adresseMail;
     private String login;
+    private String password;
     private Date dateDebutCertificat;
     private boolean asPaye;
     private boolean estApte;
