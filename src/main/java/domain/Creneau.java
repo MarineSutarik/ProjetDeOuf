@@ -10,12 +10,14 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author allan
  */
 @Entity
+@Document
 class Creneau implements Serializable {
     
     @Id

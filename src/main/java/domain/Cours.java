@@ -7,21 +7,23 @@ package domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author allan
  */
 @Entity
+@Document
 public class Cours implements Serializable {
     @Id
+    @GeneratedValue
+    private Integer idCours;
     private String nomCours ;
-    
     private Integer niveauCible ;
-    @Id
     private Creneau creneau;
-    @Id
     private Integer enseignant;
     private Participant[] participants ;
 

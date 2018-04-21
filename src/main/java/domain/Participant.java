@@ -5,16 +5,18 @@
  */
 package domain;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author allan
  */
 @Entity
-class Participant {
+@Document
+class Participant implements Serializable {
     @Id
     private Integer idMembre;
     private String nom;

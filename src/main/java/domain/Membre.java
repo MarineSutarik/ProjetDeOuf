@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +16,8 @@ import javax.persistence.Id;
  * @author marine
  */
 @Entity
-public class Membre {
+public class Membre implements Serializable {
+
     @Id
     @GeneratedValue
     private Integer idMembre;
@@ -25,21 +27,22 @@ public class Membre {
     private String login;
     private String password;
     private Date dateDebutCertificat;
-    private boolean asPaye;
+    private boolean aPaye;
     private boolean estApte;
     private Integer niveauExpertise;
     private String numLicence;
     private Adresse adresse ;
     protected Membre(){}
     
-    public Membre(Integer idMembre, String nom, String prenom, String adresseMail, String login, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,Adresse adresse) {
+    public Membre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean aPaye, boolean estApte, Integer niveauExpertise, String numLicence, Adresse adresse) {
         this.idMembre = idMembre;
         this.nom = nom;
         this.prenom = prenom;
         this.adresseMail = adresseMail;
         this.login = login;
+        this.password = password;
         this.dateDebutCertificat = dateDebutCertificat;
-        this.asPaye = asPaye;
+        this.aPaye = aPaye;
         this.estApte = estApte;
         this.niveauExpertise = niveauExpertise;
         this.numLicence = numLicence;
@@ -86,6 +89,14 @@ public class Membre {
         this.login = login;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public Date getDateDebutCertificat() {
         return dateDebutCertificat;
     }
@@ -94,12 +105,12 @@ public class Membre {
         this.dateDebutCertificat = dateDebutCertificat;
     }
 
-    public boolean isAsPaye() {
-        return asPaye;
+    public boolean isaPaye() {
+        return aPaye;
     }
 
-    public void setAsPaye(boolean asPaye) {
-        this.asPaye = asPaye;
+    public void setaPaye(boolean aPaye) {
+        this.aPaye = aPaye;
     }
 
     public boolean isEstApte() {

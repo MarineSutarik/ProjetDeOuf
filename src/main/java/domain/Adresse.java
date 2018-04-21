@@ -5,6 +5,8 @@
  */
 package domain;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -12,7 +14,8 @@ import javax.persistence.Id;
  *
  * @author allan
  */
-public class Adresse {
+@Entity
+public class Adresse implements Serializable {
      
     @Id
     @GeneratedValue
