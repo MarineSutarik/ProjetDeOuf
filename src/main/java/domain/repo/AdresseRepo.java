@@ -5,15 +5,13 @@
  */
 package domain.repo;
 
-import java.util.Date;
 import domain.Adresse;
-import domain.Membre;
 
 /**
  *
  * @author Marine
  */
-public interface MembreRepo {
-    public Membre creerMembre(Membre m);
-
+public interface AdresseRepo {
+    public Adresse creerAdresse(Adresse a);
+    
 }

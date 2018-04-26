@@ -6,21 +6,30 @@
 package domain.repo;
 
 import java.util.Date;
-import modele.Adresse;
-import modele.Membre;
+import java.util.HashMap;
+import java.util.Map;
+import domain.Adresse;
+import domain.Membre;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Marine
  */
-@Service
+@Repository
 public class MembreRepoImpl implements MembreRepo {
+    private final Map<Integer, Membre> membreById = new HashMap<>();
+    private Integer lastIndex = new Integer(0);
 
     @Override
-    public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence, Adresse padresse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Membre creerMembre(Membre m) {
+        m.setIdMembre(lastIndex+1);
+        lastIndex = m.getIdMembre();
+        membreById.put(lastIndex, m);
+        return m;
     }
+  
 
   
     

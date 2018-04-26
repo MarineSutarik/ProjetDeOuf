@@ -26,8 +26,8 @@ public class Adresse implements Serializable {
     protected Adresse() {
     }
 
-    public Adresse(Integer idAdresse, String pays, String ville) {
-        this.idAdresse = idAdresse;
+    public Adresse(String pays, String ville) {
+       
         this.pays = pays;
         this.ville = ville;
     }

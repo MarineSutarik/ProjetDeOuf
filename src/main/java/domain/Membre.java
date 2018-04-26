@@ -34,8 +34,8 @@ public class Membre implements Serializable {
     private Adresse adresse ;
     protected Membre(){}
     
-    public Membre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean aPaye, boolean estApte, Integer niveauExpertise, String numLicence, Adresse adresse) {
-        this.idMembre = idMembre;
+    public Membre( String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean aPaye, boolean estApte, Integer niveauExpertise, String numLicence, Adresse adresse) {
+        
         this.nom = nom;
         this.prenom = prenom;
         this.adresseMail = adresseMail;

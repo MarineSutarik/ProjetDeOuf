@@ -7,7 +7,7 @@ package services;
 
 
 import java.util.Date;
-import modele.Membre;
+import domain.Membre;
 
 /**
  *
@@ -31,5 +31,5 @@ public interface GestionMembre {
      * @param pays
      * @param ville
      */
-    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,Integer idAdresse, String pays, String ville);
+    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,Integer idAdresse, String pays, String ville);
 }
