@@ -35,7 +35,9 @@ public class GestionMembreImp implements GestionMembre{
 
     @Override
     public Membre seconnecter(String login, String password) {
-    Membre m = membre.getByLogin(String login);
+   // Membre m = membre.;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
     }
 
     @Override
