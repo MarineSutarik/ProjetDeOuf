@@ -8,6 +8,8 @@ package services;
 
 import java.util.Date;
 import domain.Membre;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -16,20 +18,44 @@ import domain.Membre;
 public interface GestionMembre {
 
     /**
-     *
+     * Correspond au DSS s'inscrire
      * @param idMembre
      * @param nom
      * @param prenom
      * @param adresseMail
      * @param login
+     * @param password
      * @param dateDebutCertificat
      * @param asPaye
      * @param estApte
      * @param niveauExpertise
      * @param numLicence
-     * @param idAdresse
      * @param pays
      * @param ville
+     * @return 
      */
-    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,Integer idAdresse, String pays, String ville);
+    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence, String pays, String ville);
+    
+    /**
+     * Permet à un utilisateur de se connecter
+     * @param login
+     * @param password
+     * @return 
+     */
+    public Membre seconnecter(String login, String password);
+    
+    public void payerCotisation(String IBAN, float somme, Integer idMembre);
+    
+    /**
+     *
+     * @return
+     */
+    public Map<Membre, String> consulterCotisation ();
+    
+    /**
+     *
+     * @return
+     */
+    public Map <String, String> consulterStatistiques();
+    
 }

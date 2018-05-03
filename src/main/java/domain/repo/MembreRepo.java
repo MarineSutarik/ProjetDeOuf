@@ -8,12 +8,15 @@ package domain.repo;
 import java.util.Date;
 import domain.Adresse;
 import domain.Membre;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Marine
  */
-public interface MembreRepo {
+public interface MembreRepo extends CrudRepository<Membre, Integer>{
     public Membre creerMembre(Membre m);
+    
+    public Membre getMembreByLogin(String login);
 
 }

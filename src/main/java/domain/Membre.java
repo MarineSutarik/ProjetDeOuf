@@ -7,15 +7,19 @@ package domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author marine
  */
 @Entity
+@Table(name = "membre")
 public class Membre implements Serializable {
 
     @Id
@@ -24,6 +28,7 @@ public class Membre implements Serializable {
     private String nom;
     private String prenom;
     private String adresseMail;
+    @Column(unique=true)
     private String login;
     private String password;
     private Date dateDebutCertificat;
