@@ -8,6 +8,7 @@ package services;
 
 import java.util.Date;
 import domain.Membre;
+import exception.ExceptionMembreInexistant;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public interface GestionMembre {
      * @param password
      * @return 
      */
-    public Membre seconnecter(String login, String password);
+    public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant ;
     
     public void payerCotisation(String IBAN, float somme, Integer idMembre);
     

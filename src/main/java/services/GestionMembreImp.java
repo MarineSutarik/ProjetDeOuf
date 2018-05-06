@@ -4,6 +4,8 @@ import domain.Adresse;
 import domain.Membre;
 import domain.repo.AdresseRepo;
 import domain.repo.MembreRepo;
+import domain.repo.MembreRepoCRUD;
+import exception.ExceptionMembreInexistant;
 import java.util.Date;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class GestionMembreImp implements GestionMembre{
     @Autowired
     private MembreRepo membre;
     
+        @Autowired
+    private MembreRepoCRUD membreCRUD;
+    
     @Autowired
     private AdresseRepo adresse;
 
@@ -28,15 +33,19 @@ public class GestionMembreImp implements GestionMembre{
         Adresse a = new Adresse( pays, ville);
         a = adresse.creerAdresse(a);
         Membre m = new Membre(nom, prenom, adresseMail, login,password, dateDebutCertificat, asPaye, estApte, niveauExpertise, numLicence, a);
-        m  = membre.creerMembre(m);
+        m  = membreCRUD.save(m);
         
         return m;
     }
 
     @Override
-    public Membre seconnecter(String login, String password) {
-   // Membre m = membre.;
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant {
+        
+        Membre m =  membreCRUD.findByLogin(login);
+        if (!m.getPassword().equals(password.trim()))
+            throw new ExceptionMembreInexistant();
+        
+        return m;
    
     }
 

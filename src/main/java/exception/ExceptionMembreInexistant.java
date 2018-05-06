@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain.repo;
-
-import java.util.Date;
-import domain.Adresse;
-import domain.Membre;
-import org.springframework.data.repository.CrudRepository;
+package exception;
 
 /**
  *
  * @author Marine
  */
-public interface MembreRepo {
-    public Membre creerMembre(Membre m);
+public class ExceptionMembreInexistant  extends Exception{
     
-
 }
