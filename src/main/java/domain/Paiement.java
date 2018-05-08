@@ -5,6 +5,7 @@
  */
 package domain;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,7 @@ public class Paiement {
     @Id
     @GeneratedValue
     private Integer idPaiement ;
-    private Integer refBancaire;
+    private String refBancaire;
     @Column (nullable = false)
     private float montant;
     private Integer idMembre;
@@ -27,8 +28,8 @@ public class Paiement {
     public Paiement() {
     }
 
-    public Paiement(Integer idPaiement, Integer refBancaire, float montant, Integer idMembre) {
-        this.idPaiement = idPaiement;
+    public Paiement( String refBancaire, float montant, Integer idMembre) {
+        
         this.refBancaire = refBancaire;
         this.montant = montant;
         this.idMembre = idMembre;
@@ -42,11 +43,11 @@ public class Paiement {
         this.idPaiement = idPaiement;
     }
 
-    public Integer getRefBancaire() {
+    public String getRefBancaire() {
         return refBancaire;
     }
 
-    public void setRefBancaire(Integer refBancaire) {
+    public void setRefBancaire(String refBancaire) {
         this.refBancaire = refBancaire;
     }
 

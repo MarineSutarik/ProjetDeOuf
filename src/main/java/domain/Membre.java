@@ -65,6 +65,10 @@ public class Membre implements Serializable {
     public String getNom() {
         return nom;
     }
+    
+     public boolean getAPaye() {
+        return this.aPaye;
+    }
 
     public void setNom(String nom) {
         this.nom = nom;

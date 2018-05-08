@@ -5,21 +5,13 @@
  */
 package domain.repo;
 
-import domain.Membre;
+import domain.Paiement;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Marine
  */
-public interface MembreRepoCRUD extends CrudRepository<Membre, Integer>{
+public interface PaiementRepo extends CrudRepository <Paiement,Integer> {
     
-    /**
-     *
-     * @param login
-     * @return
-     */
-    public Membre findByLogin(String login);
-    
-    public Membre findByIdMembre( Integer idMembre);
 }
