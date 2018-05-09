@@ -10,7 +10,9 @@ import exception.ExceptionMembreInexistant;
 import java.util.Date;
 import java.util.Map;
 import domain.Paiement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +40,7 @@ public class GestionMembreImp implements GestionMembre{
     public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,  String pays, String ville) {
         Adresse a = new Adresse( pays, ville);
         a = adresse.creerAdresse(a);
-        Membre m = new Membre(nom, prenom, adresseMail, login,password, dateDebutCertificat, asPaye, estApte, niveauExpertise, numLicence, a);
+        Membre m = new Membre(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
         m  = membreCRUD.save(m);
         
         return m;
@@ -60,14 +62,15 @@ public class GestionMembreImp implements GestionMembre{
         Paiement p = new Paiement(IBAN,somme, idMembre);
         paiement.save(p);
         Membre m = membreCRUD.findByIdMembre(idMembre);
-        m.setaPaye(true);
+        m.setaPaye(new Date());
+        membreCRUD.save(m);
     }
 
     @Override
-    public Map<Membre, String> consulterCotisation() {
-        HashMap<Membre, String> r = new  HashMap<Membre, String> ();
+    public List<Membre> consulterCotisation() {
+        ArrayList<Membre> r = new   ArrayList<Membre> ();
         for( Membre m : membreCRUD.findAll()){
-            r.put(m, m.getAPaye()+"");
+            r.add(m);
         }
         return r;
     }
@@ -75,6 +78,13 @@ public class GestionMembreImp implements GestionMembre{
     @Override
     public Map<String, String> consulterStatistiques() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void donnerCertificat(Integer idMembre) {
+        Membre m = membreCRUD.findByIdMembre(idMembre);
+        m.setDateDebutCertificat(new Date());
+        membreCRUD.save(m);
     }
      
     

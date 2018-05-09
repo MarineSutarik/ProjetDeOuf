@@ -32,14 +32,13 @@ public class Membre implements Serializable {
     private String login;
     private String password;
     private Date dateDebutCertificat;
-    private boolean aPaye;
-    private boolean estApte;
+    private Date aPaye;
     private Integer niveauExpertise;
     private String numLicence;
     private Adresse adresse ;
     protected Membre(){}
     
-    public Membre( String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean aPaye, boolean estApte, Integer niveauExpertise, String numLicence, Adresse adresse) {
+    public Membre( String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, Date aPaye,  Integer niveauExpertise, String numLicence, Adresse adresse) {
         
         this.nom = nom;
         this.prenom = prenom;
@@ -48,7 +47,6 @@ public class Membre implements Serializable {
         this.password = password;
         this.dateDebutCertificat = dateDebutCertificat;
         this.aPaye = aPaye;
-        this.estApte = estApte;
         this.niveauExpertise = niveauExpertise;
         this.numLicence = numLicence;
         this.adresse = adresse;
@@ -66,7 +64,7 @@ public class Membre implements Serializable {
         return nom;
     }
     
-     public boolean getAPaye() {
+     public Date getAPaye() {
         return this.aPaye;
     }
 
@@ -114,20 +112,12 @@ public class Membre implements Serializable {
         this.dateDebutCertificat = dateDebutCertificat;
     }
 
-    public boolean isaPaye() {
+    public Date isaPaye() {
         return aPaye;
     }
 
-    public void setaPaye(boolean aPaye) {
+    public void setaPaye(Date aPaye) {
         this.aPaye = aPaye;
-    }
-
-    public boolean isEstApte() {
-        return estApte;
-    }
-
-    public void setEstApte(boolean estApte) {
-        this.estApte = estApte;
     }
 
     public Integer getNiveauExpertise() {
