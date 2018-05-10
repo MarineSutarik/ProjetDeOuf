@@ -45,7 +45,7 @@ public interface GestionMembre {
      */
     public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant ;
     
-    public void payerCotisation(String IBAN, float somme, Integer idMembre);
+    public void payerCotisation(String IBAN, float somme,  Membre membre);
     public void donnerCertificat(Integer idMembre);
     /**
      *

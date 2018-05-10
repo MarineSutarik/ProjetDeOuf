@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,16 +24,17 @@ public class Paiement {
     private String refBancaire;
     @Column (nullable = false)
     private float montant;
-    private Integer idMembre;
+    @ManyToOne
+    private Membre membre;
 
     public Paiement() {
     }
 
-    public Paiement( String refBancaire, float montant, Integer idMembre) {
+    public Paiement( String refBancaire, float montant, Membre membre) {
         
         this.refBancaire = refBancaire;
         this.montant = montant;
-        this.idMembre = idMembre;
+        this.membre = membre;
     }
 
     public Integer getIdPaiement() {
@@ -59,12 +61,12 @@ public class Paiement {
         this.montant = montant;
     }
 
-    public Integer getIdMembre() {
-        return idMembre;
+    public Membre getMembre() {
+        return membre;
     }
 
-    public void setIdMembre(Integer idMembre) {
-        this.idMembre = idMembre;
+    public void setMembre(Membre membre) {
+        this.membre = membre;
     }
          
 }

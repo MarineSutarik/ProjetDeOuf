@@ -80,10 +80,10 @@ public class GestionMembreImp implements GestionMembre{
     }
 
     @Override
-    public void payerCotisation(String IBAN, float somme, Integer idMembre) {
-        Paiement p = new Paiement(IBAN,somme, idMembre);
+    public void payerCotisation(String IBAN, float somme, Membre membre) {
+        Paiement p = new Paiement(IBAN,somme, membre);
         paiement.save(p);
-        Membre m = membres.findByIdMembre(idMembre);
+        Membre m = membres.findByIdMembre(membre.getIdMembre());
         m.setaPaye(new Date());
         membres.save(m);
     }
