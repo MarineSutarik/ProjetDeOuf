@@ -20,4 +20,7 @@ public interface MembreRepoCustom {
     
     public String getNombreCotisationsRegles();
 
+    public Membre updateMembre(Integer idMembre, Membre m);
+    
+    public void deleteMembre(Integer idMembre);
 }
