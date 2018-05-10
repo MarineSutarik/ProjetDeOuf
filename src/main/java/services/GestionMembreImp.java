@@ -8,6 +8,7 @@ import domain.repo.PaiementRepo;
 import exception.ExceptionMembreInexistant;
 import java.util.Date;
 import java.util.Map;
+import java.util.Optional;
 import domain.Paiement;
 import domain.President;
 import domain.enumeration.TypeMembre;
@@ -132,7 +133,5 @@ public class GestionMembreImp implements GestionMembre{
         m.setDateDebutCertificat(new Date());
         membres.save(m);
     }
-     
-    
     
 }

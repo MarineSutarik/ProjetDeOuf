@@ -22,5 +22,5 @@ public interface MembreRepo extends CrudRepository<Membre, Integer>, MembreRepoC
     public Membre findByLogin(String login);
     
     public Membre findByIdMembre( Integer idMembre);
-    
+
 }

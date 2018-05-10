@@ -59,4 +59,5 @@ public interface GestionMembre {
      */
     public Map <String, String> consulterStatistiques();
     
+    
 }

@@ -11,4 +11,11 @@ package exception;
  */
 public class ExceptionMembreInexistant  extends Exception{
     
+    public ExceptionMembreInexistant(){
+        
+    }
+    
+    public ExceptionMembreInexistant(String ErrorMessage) {
+        super(ErrorMessage);
+    }
 }
