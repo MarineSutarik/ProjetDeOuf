@@ -44,7 +44,7 @@ public class GestionMembreImp implements GestionMembre{
     private EnseignantRepo enseignant;
     
     @Override
-    public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,  String pays, String ville,TypeMembre type) {
+    public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, Integer niveauExpertise, String numLicence,  String pays, String ville,TypeMembre type) {
         Adresse a = new Adresse( pays, ville);
         a = adresse.creerAdresse(a);
          Membre m = null;
