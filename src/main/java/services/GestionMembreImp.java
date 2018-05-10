@@ -1,20 +1,25 @@
 package services;
 
 import domain.Adresse;
+import domain.Enseignant;
 import domain.Membre;
 import domain.repo.AdresseRepo;
-import domain.repo.MembreRepo;
-import domain.repo.MembreRepoCRUD;
 import domain.repo.PaiementRepo;
 import exception.ExceptionMembreInexistant;
 import java.util.Date;
 import java.util.Map;
 import domain.Paiement;
+import domain.President;
+import domain.enumeration.TypeMembre;
+import domain.repo.EnseignantRepo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import domain.Secretaire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import domain.repo.MembreRepoCustom;
+import domain.repo.MembreRepo;
 
 
 /**
@@ -24,11 +29,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class GestionMembreImp implements GestionMembre{
 
-    @Autowired
-    private MembreRepo membre;
+  
     
     @Autowired
-    private MembreRepoCRUD membreCRUD;
+    private MembreRepo membres;
     
     @Autowired
     private AdresseRepo adresse;
@@ -36,12 +40,30 @@ public class GestionMembreImp implements GestionMembre{
     @Autowired
     private PaiementRepo paiement;
     
+    @Autowired
+    private EnseignantRepo enseignant;
+    
     @Override
-    public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,  String pays, String ville) {
+    public Membre creerMembre(Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence,  String pays, String ville,TypeMembre type) {
         Adresse a = new Adresse( pays, ville);
         a = adresse.creerAdresse(a);
-        Membre m = new Membre(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
-        m  = membreCRUD.save(m);
+         Membre m = null;
+        switch (type){
+            case Membre :
+                 m = new Membre(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
+                 break;
+            case Secretaire :
+                 m = new Secretaire(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
+                 break;
+            case President :
+                m = new President(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
+                 break;
+            case Enseignant :
+                 m = new Enseignant(nom, prenom, adresseMail, login,password, null, null,  niveauExpertise, numLicence, a);
+                 break;
+                 
+        }
+        m  = membres.save(m);
         
         return m;
     }
@@ -49,7 +71,7 @@ public class GestionMembreImp implements GestionMembre{
     @Override
     public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant {
         
-        Membre m =  membreCRUD.findByLogin(login);
+        Membre m =  membres.findByLogin(login);
         if (!m.getPassword().equals(password.trim()))
             throw new ExceptionMembreInexistant();
         
@@ -61,15 +83,15 @@ public class GestionMembreImp implements GestionMembre{
     public void payerCotisation(String IBAN, float somme, Integer idMembre) {
         Paiement p = new Paiement(IBAN,somme, idMembre);
         paiement.save(p);
-        Membre m = membreCRUD.findByIdMembre(idMembre);
+        Membre m = membres.findByIdMembre(idMembre);
         m.setaPaye(new Date());
-        membreCRUD.save(m);
+        membres.save(m);
     }
 
     @Override
     public List<Membre> consulterCotisation() {
         ArrayList<Membre> r = new   ArrayList<Membre> ();
-        for( Membre m : membreCRUD.findAll()){
+        for( Membre m : membres.findAll()){
             r.add(m);
         }
         return r;
@@ -77,14 +99,38 @@ public class GestionMembreImp implements GestionMembre{
 
     @Override
     public Map<String, String> consulterStatistiques() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    HashMap<String,String> h = new HashMap<String,String>();
+    
+   //nombre de membre
+    String k = "nombre de membre";
+    String v = membres.count()+" membres";
+    h.put(k, v);
+    
+    //nombre d'enseignant
+     k = "nombre d'enseignant";
+     v = enseignant.count()+" enseignants";
+    h.put(k, v);
+    
+    
+    //nombre de cotisation prévue
+     k = "nombre d'enseignant";
+     v =membres.getNombreCotisationsPrevues()+" cotisations";
+    h.put(k, v);
+    
+    
+    //nombre de cotisation réglées 
+     k = "nombre d'enseignant";
+     v =membres.getNombreCotisationsRegles()+" cotisations";
+    h.put(k, v);
+    
+    return h;
     }
 
     @Override
     public void donnerCertificat(Integer idMembre) {
-        Membre m = membreCRUD.findByIdMembre(idMembre);
+        Membre m = membres.findByIdMembre(idMembre);
         m.setDateDebutCertificat(new Date());
-        membreCRUD.save(m);
+        membres.save(m);
     }
      
     

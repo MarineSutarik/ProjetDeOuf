@@ -8,6 +8,7 @@ package services;
 
 import java.util.Date;
 import domain.Membre;
+import domain.enumeration.TypeMembre;
 import exception.ExceptionMembreInexistant;
 import java.util.List;
 import java.util.Map;
@@ -28,14 +29,13 @@ public interface GestionMembre {
      * @param password
      * @param dateDebutCertificat
      * @param asPaye
-     * @param estApte
      * @param niveauExpertise
      * @param numLicence
      * @param pays
      * @param ville
      * @return 
      */
-    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence, String pays, String ville);
+    public Membre creerMembre (Integer idMembre, String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat, boolean asPaye, boolean estApte, Integer niveauExpertise, String numLicence, String pays, String ville, TypeMembre type);
     
     /**
      * Permet à un utilisateur de se connecter
