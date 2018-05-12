@@ -26,7 +26,7 @@ import services.GestionMembre;
 @RestController
 @RequestMapping("/miage/plongee")
 public class ControllerRest {
-    
+/*    
     @Autowired
     private GestionMembre gestionMembre;
     
@@ -77,6 +77,6 @@ public class ControllerRest {
     
     
     
-    
+    */
     
 }
