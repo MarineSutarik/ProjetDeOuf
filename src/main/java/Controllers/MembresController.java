@@ -90,18 +90,23 @@ public class MembresController {
     }
     
     @GetMapping("/creation")   
-     public Membre creerMembre (@RequestParam(value="idMembre") Integer idMembre,
-             @RequestParam(value="nom") String nom,
-             @RequestParam(value="prenom") String prenom,
-             @RequestParam(value="adresseMail") String adresseMail,
-             @RequestParam(value="login") String login,
-             @RequestParam(value="password") String password,
-             @RequestParam(value="dateDebutCertificat") Date dateDebutCertificat,
-             @RequestParam(value="niveauExpertise") Integer niveauExpertise,
-             @RequestParam(value="numLicence") String numLicence,
-             @RequestParam(value="pays") String pays,
-             @RequestParam(value="ville") String ville,
-             @RequestParam(value="type") TypeMembre type){
-         return gestionMembre.creerMembre(idMembre, nom, prenom, adresseMail, login, password, dateDebutCertificat, niveauExpertise, numLicence, pays, ville, type);
+     public Membre creerMembre (
+             @RequestBody String nom,
+             @RequestBody String prenom,
+             @RequestBody String adresseMail,
+            @RequestBody String login,
+             @RequestBody String password,
+             @RequestBody Date dateDebutCertificat,
+             @RequestBody Integer niveauExpertise,
+             @RequestBody String numLicence,
+             @RequestBody String pays,
+            @RequestBody String ville,
+             @RequestBody TypeMembre type){
+         return gestionMembre.creerMembre( nom, prenom, adresseMail, login, password, dateDebutCertificat, niveauExpertise, numLicence, pays, ville, type);
+     }
+     
+       @GetMapping("/test")   
+     public Integer test ( ){
+         return 1;
      }    
 }

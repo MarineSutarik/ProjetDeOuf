@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package miage.Plongee;
+package component;
+import domain.Membre;
+import domain.enumeration.TypeMembre;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,11 +17,16 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Component
 public class DataFiller implements CommandLineRunner{
+
      @Autowired
      GestionMembre gestionMembre;
      
      @Override
     @Transactional
     public void run(String... strings) throws Exception {
+        gestionMembre.creerMembre("RIGAL", "Anais", "thuglife@gourgandine.fr", "thug", "life", null, 1, "564654AD54", "France", "Sulpice", TypeMembre.President);
+         gestionMembre.creerMembre("TOURNIE", "Vivien", "viv@gourgandine.fr", "viv", "life", null, 1, "564654uAD54", "France", "Toulouse", TypeMembre.Membre);
+        Membre m =  gestionMembre.creerMembre("SUTARIK", "Marine", "marine@gourgandine.fr", "mar", "life", null, 1, "564u654AD54", "Slovaquie", "Nowhere", TypeMembre.Secretaire);
+        gestionMembre.payerCotisation("pihjp", 30, m);
     }
 }
