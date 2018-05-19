@@ -21,27 +21,30 @@ public interface GestionMembre {
 
     /**
      * Correspond au DSS s'inscrire
-     * @param idMembre
      * @param nom
      * @param prenom
      * @param adresseMail
      * @param login
      * @param password
      * @param dateDebutCertificat
-     * @param asPaye
      * @param niveauExpertise
      * @param numLicence
+     * @param type
      * @param pays
      * @param ville
      * @return 
      */
     public Membre creerMembre ( String nom, String prenom, String adresseMail, String login, String password, Date dateDebutCertificat,  Integer niveauExpertise, String numLicence, String pays, String ville, TypeMembre type);
     
+    public Membre updateMembre(Integer idMembre, Membre m);
+    public void deleteMembre(Integer idMembre);
+    
     /**
      * Permet à un utilisateur de se connecter
      * @param login
      * @param password
      * @return 
+     * @throws exception.ExceptionMembreInexistant 
      */
     public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant ;
     

@@ -51,13 +51,12 @@ public class MembresController {
     
     @GetMapping("/{idMembre}")
     public Membre update(@PathVariable("idMembre") Integer id, @RequestBody Membre m) throws ExceptionMembreInexistant {
-        return this.MembresRepo.updateMembre(id, m);
-        
+        return this.gestionMembre.updateMembre(id, m);
     }
                 
     @DeleteMapping("/{idMembre}")
     public void delete(@PathVariable("idMembre") Integer id) throws ExceptionMembreInexistant {
-        this.MembresRepo.deleteMembre(id);
+        this.gestionMembre.deleteMembre(id);
     }
     
       

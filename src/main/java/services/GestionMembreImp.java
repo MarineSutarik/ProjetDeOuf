@@ -70,6 +70,29 @@ public class GestionMembreImp implements GestionMembre{
     }
 
     @Override
+    public Membre updateMembre(Integer idMembre, Membre m) {
+        Membre membreActuel = this.membres.findByIdMembre(idMembre);
+        
+        membreActuel.setAdresse(m.getAdresse());
+        membreActuel.setAdresseMail(m.getAdresseMail());
+        membreActuel.setDateDebutCertificat(m.getDateDebutCertificat());
+        membreActuel.setLogin(m.getLogin());
+        membreActuel.setNiveauExpertise(m.getNiveauExpertise());
+        membreActuel.setNom(m.getNom());
+        membreActuel.setNumLicence(m.getNumLicence());
+        membreActuel.setPassword(m.getPassword());
+        membreActuel.setPrenom(m.getPrenom());
+        membreActuel.setaPaye(m.getAPaye());
+        
+        return this.membres.save(m);
+    }
+    
+    @Override
+    public void deleteMembre(Integer idMembre){
+        membres.delete(membres.findByIdMembre(idMembre));
+    }
+    
+    @Override
     public Membre seconnecter(String login, String password) throws ExceptionMembreInexistant {
         
         Membre m =  membres.findByLogin(login);
