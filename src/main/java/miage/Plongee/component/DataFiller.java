@@ -18,15 +18,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Component
 public class DataFiller implements CommandLineRunner{
 
-     @Autowired
+ /*    @Autowired
      GestionMembre gestionMembre;
-     
+   */  
      @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        gestionMembre.creerMembre("RIGAL", "Anais", "thuglife@gourgandine.fr", "thug", "life", null, 1, "564654AD54", "France", "Sulpice", TypeMembre.President);
+    /*    gestionMembre.creerMembre("RIGAL", "Anais", "thuglife@gourgandine.fr", "thug", "life", null, 1, "564654AD54", "France", "Sulpice", TypeMembre.President);
          gestionMembre.creerMembre("TOURNIE", "Vivien", "viv@gourgandine.fr", "viv", "life", null, 1, "564654uAD54", "France", "Toulouse", TypeMembre.Membre);
         Membre m =  gestionMembre.creerMembre("SUTARIK", "Marine", "marine@gourgandine.fr", "mar", "life", null, 1, "564u654AD54", "Slovaquie", "Nowhere", TypeMembre.Secretaire);
-        gestionMembre.payerCotisation("pihjp", 30, m);
+        gestionMembre.payerCotisation("pihjp", 30, m);*/
     }
 }
